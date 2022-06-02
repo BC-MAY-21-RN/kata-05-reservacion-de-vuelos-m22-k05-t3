@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "248866531483",
+    "project_id": "flight-reservation-firebase",
+    "storage_bucket": "flight-reservation-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248866531483:android:9773514aec700fd7cffe3e",
+        "android_client_info": {
+          "package_name": "com.reservacion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "248866531483-es1qrg8dnoqkpllmhnhhegmdb2gkf7du.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reservacion",
+            "certificate_hash": "4c37fbb60bfa662901c973330e87c1f857267d51"
+          }
+        },
+        {
+          "client_id": "248866531483-grqieu7rngds72d02f2qu16kd9jptr8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQwye5VzIgGq0NO3bI1XITxyRryVGxDFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "248866531483-grqieu7rngds72d02f2qu16kd9jptr8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
