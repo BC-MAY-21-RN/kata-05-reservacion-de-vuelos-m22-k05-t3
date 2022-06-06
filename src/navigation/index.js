@@ -41,7 +41,7 @@ export default function Navigation() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         {typeStack(user).map((item, index) => (
           <Stack.Screen
             key={index}

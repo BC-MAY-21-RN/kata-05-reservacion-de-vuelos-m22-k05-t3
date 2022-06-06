@@ -10,6 +10,7 @@ const colors = {
   overlay: '#21252B',
   pink: '#FF3366',
   borderinputred: '#FF5F58',
+  inactive: '#3C404855',
 };
 
 export default colors;

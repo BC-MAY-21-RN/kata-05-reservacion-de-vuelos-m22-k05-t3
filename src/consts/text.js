@@ -1,4 +1,4 @@
-const text = {
+const texts = {
   register: {
     title: 'Sign Up',
     input1: 'First Name',
@@ -17,4 +17,4 @@ const text = {
   },
 };
 
-export default text;
+export default texts;
