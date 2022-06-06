@@ -4,9 +4,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import UserContext from '../context/UserContext.js';
 import auth from '@react-native-firebase/auth';
 
-import RegisterScreen from '../screens/RegisterScreen.js';
-import LoginScreen from '../screens/LoginScreen.js';
-import FlightsScreen from '../screens/FlightsScreen.js';
+import RegisterScreen from '../screens/RegisterScreen';
+import LoginScreen from '../screens/LoginScreen';
+import FlightsScreen from '../screens/FlightsScreen';
 //import { renderNode } from 'react-native-elements/dist/helpers';
 
 const Stack = createNativeStackNavigator();

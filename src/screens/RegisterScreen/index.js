@@ -1,75 +1,10 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
-import texts from '../consts/text';
-import colors from '../consts/colors';
-import VisibleSVG from '../assets/icons/visible.svg';
-import CheckSVG from '../assets/icons/check.svg';
-import GoogleSVG from '../assets/icons/google.svg';
-
-const InputComponent = ({title}) => {
-  return (
-    <View
-      style={
-        Dimensions.get('screen').height <= 640
-          ? {marginTop: 7}
-          : Dimensions.get('screen').height >= 641 &&
-            Dimensions.get('screen').height < 730
-          ? {marginTop: 15}
-          : {marginTop: 18}
-      }>
-      <Text
-        style={{
-          marginLeft: 20,
-          fontSize: title === 'First Name' ? 18 : 16,
-          marginBottom: '1.23%',
-          color: colors.titleInputs,
-        }}>
-        {title}
-      </Text>
-      <TextInput
-        style={{
-          ...{
-            width: Dimensions.get('screen').width - 40,
-            borderColor: colors.InputBorder,
-            borderWidth: 1,
-            fontSize: 17,
-            marginLeft: 20,
-            borderRadius: 2,
-          },
-          ...(Dimensions.get('screen').height <= 640
-            ? {height: 40}
-            : {height: 50}),
-        }}
-      />
-      {title === 'Password' ? (
-        <TouchableOpacity
-          style={{
-            ...{position: 'absolute', right: 35},
-            ...(Dimensions.get('screen').height <= 640 ? {top: 40} : {top: 45}),
-          }}>
-          <VisibleSVG />
-        </TouchableOpacity>
-      ) : null}
-      {title === 'Password' ? (
-        <Text
-          style={{
-            marginLeft: 20,
-            fontSize: 13,
-            marginTop: '1.2%',
-            color: colors.passwordtextvalidation,
-          }}>
-          {texts.register.textinput3}
-        </Text>
-      ) : null}
-    </View>
-  );
-};
+import {View, Text, Dimensions, TouchableOpacity} from 'react-native';
+import texts from '../../consts/text';
+import colors from '../../consts/colors';
+import CheckSVG from '../../assets/icons/check.svg';
+import GoogleSVG from '../../assets/icons/google.svg';
+import InputComponent from '../../components/InputComponent';
 
 const Terms = ({text, isfirst}) => {
   return (
