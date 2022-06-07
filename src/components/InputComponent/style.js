@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   input: {
     ...{
       width: Dimensions.get('screen').width - 40,
-      borderColor: colors.InputBorder,
       borderWidth: 1,
       fontSize: 17,
       marginLeft: 20,
@@ -36,6 +35,15 @@ const styles = StyleSheet.create({
   icon: {
     ...{position: 'absolute', right: 35},
     ...(Dimensions.get('screen').height <= 640 ? {top: 40} : {top: 45}),
+  },
+  blue: {
+    borderColor: colors.bluetitle,
+  },
+  gray: {
+    borderColor: colors.InputBorder,
+  },
+  colorblue: {
+    color: colors.bluetitle,
   },
 });
 

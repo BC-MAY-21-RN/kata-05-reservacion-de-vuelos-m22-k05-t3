@@ -1,155 +1,60 @@
-import React from 'react';
-import {View, Text, Dimensions, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text} from 'react-native';
 import texts from '../../consts/text';
-import colors from '../../consts/colors';
-import CheckSVG from '../../assets/icons/check.svg';
-import GoogleSVG from '../../assets/icons/google.svg';
 import InputComponent from '../../components/InputComponent';
-
-const Terms = ({text, isfirst}) => {
-  return (
-    <View
-      style={{
-        ...{
-          marginLeft: 20,
-          width: Dimensions.get('screen').width - 40,
-          height: 20.1,
-        },
-        ...(Dimensions.get('screen').height <= 640
-          ? {marginTop: isfirst ? 23 : 0, marginBottom: 7}
-          : {marginTop: isfirst ? 25 : 0, marginBottom: 10}),
-      }}>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-        <TouchableOpacity
-          style={{
-            width: 20,
-            height: 20,
-            borderColor: colors.termscolor,
-            borderWidth: 1,
-          }}>
-          <CheckSVG />
-        </TouchableOpacity>
-        <Text style={{color: colors.termscolor, marginLeft: 10, fontSize: 16}}>
-          {text}
-        </Text>
-      </View>
-    </View>
-  );
-};
-
-const Buttons = () => {
-  return (
-    <View
-      style={
-        Dimensions.get('screen').height <= 640
-          ? {marginTop: 15}
-          : Dimensions.get('screen').height >= 641 &&
-            Dimensions.get('screen').height < 730
-          ? {marginTop: 19}
-          : {marginTop: 30}
-      }>
-      <TouchableOpacity
-        style={{
-          backgroundColor: colors.inactive,
-          height: 40,
-          width: Dimensions.get('screen').width - 60,
-          marginLeft: 30,
-          borderRadius: 10,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <Text style={{color: colors.white, fontSize: 18}}>
-          {texts.register.button1}
-        </Text>
-      </TouchableOpacity>
-      <Text
-        style={{
-          alignSelf: 'center',
-          marginVertical: '1.23%',
-          color: colors.inactive,
-          fontSize: 16,
-        }}>
-        Or
-      </Text>
-      <TouchableOpacity
-        style={{
-          backgroundColor: colors.inactive,
-          height: 40,
-          width: Dimensions.get('screen').width - 60,
-          marginLeft: 30,
-          borderRadius: 10,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <Text style={{color: colors.white, fontSize: 18}}>
-          {texts.register.button2}
-        </Text>
-        <View style={{position: 'absolute', left: 28}}>
-          <GoogleSVG />
-        </View>
-      </TouchableOpacity>
-    </View>
-  );
-};
+import RegisterUser from '../../models/RegisterUser';
+import Buttons from '../../components/Buttons';
+import Terms from '../../components/Term';
+import BottomText from '../../components/BottomText';
+import styles from './styles';
 
 export default function RegisterScreen() {
+  const [form, setform] = useState(new RegisterUser());
+  const [buttonsActive, setButtonsActive] = useState(false);
+
+  const changeForm = (value, key) => {
+    form.setValues({[key]: value});
+    setButtonsActive(form.getBool());
+    setform(form);
+  };
+
   return (
     <View>
-      <Text
-        style={{
-          ...{
-            color: colors.bluetitle,
-            marginLeft: 20,
-            lineHeight: 25,
-          },
-          ...(Dimensions.get('screen').height <= 640
-            ? {
-                fontSize: 21,
-                marginTop: 14,
-                marginBottom: 12,
-              }
-            : Dimensions.get('screen').height >= 641 &&
-              Dimensions.get('screen').height < 730
-            ? {
-                fontSize: 21,
-                marginTop: 29,
-                marginBottom: 18,
-              }
-            : {
-                fontSize: 23,
-                marginTop: 36,
-                marginBottom: 22,
-              }),
-        }}>
-        {texts.register.title}
-      </Text>
-      <InputComponent title={texts.register.input1} />
-      <InputComponent title={texts.register.input2} />
-      <InputComponent title={texts.register.input3} />
-      <Terms text={texts.register.term1} isfirst={true} />
-      <Terms text={texts.register.term2} isfirst={false} />
-      <Buttons />
-      <View
-        style={{
-          ...{width: '100%', height: 30, marginTop: '2.46%'},
-          ...(Dimensions.get('screen').height <= 640
-            ? {marginTop: '2.46%'}
-            : {marginTop: 35}),
-        }}>
-        <View style={{flex: 1, flexDirection: 'row', alignSelf: 'center'}}>
-          <Text
-            style={{
-              fontSize: 16,
-              color: colors.termscolor,
-              marginRight: 3,
-            }}>
-            {texts.register.bottomtext}
-          </Text>
-          <TouchableOpacity>
-            <Text style={{color: colors.bluetitle, fontSize: 16}}>Log in</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Text style={styles.title}>{texts.register.title}</Text>
+      <InputComponent
+        title={texts.register.input1}
+        changeForm={changeForm}
+        input={'input1'}
+        text={form.getValues().input1.length > 0}
+      />
+      <InputComponent
+        title={texts.register.input2}
+        changeForm={changeForm}
+        input={'input2'}
+        text={form.getValues().input2.length > 0}
+      />
+      <InputComponent
+        title={texts.register.input3}
+        changeForm={changeForm}
+        input={'input3'}
+        text={form.getValues().input3.length > 0}
+      />
+      <Terms
+        text={texts.register.term1}
+        isfirst={true}
+        changeForm={changeForm}
+        form={form.valuesRegister.check1}
+        term={'check1'}
+      />
+      <Terms
+        text={texts.register.term2}
+        isfirst={false}
+        changeForm={changeForm}
+        form={form.valuesRegister.check2}
+        term={'check2'}
+      />
+      <Buttons buttonsActive={buttonsActive} />
+      <BottomText />
     </View>
   );
 }
