@@ -11,11 +11,25 @@ import styles from './styles';
 export default function RegisterScreen() {
   const [form, setform] = useState(new RegisterUser());
   const [buttonsActive, setButtonsActive] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   const changeForm = (value, key) => {
     form.setValues({[key]: value});
     setButtonsActive(form.getBool());
-    setform(form);
+    setform(
+      new RegisterUser(
+        form.valuesRegister.input1,
+        form.valuesRegister.input2,
+        form.valuesRegister.input3,
+        form.valuesRegister.check1,
+        form.valuesRegister.check2,
+      ),
+    );
+    console.log(form);
+  };
+
+  const changeAlert = bool => {
+    setAlert(bool);
   };
 
   return (
@@ -26,18 +40,21 @@ export default function RegisterScreen() {
         changeForm={changeForm}
         input={'input1'}
         text={form.getValues().input1.length > 0}
+        alert={alert}
       />
       <InputComponent
         title={texts.register.input2}
         changeForm={changeForm}
         input={'input2'}
         text={form.getValues().input2.length > 0}
+        alert={alert}
       />
       <InputComponent
         title={texts.register.input3}
         changeForm={changeForm}
         input={'input3'}
         text={form.getValues().input3.length > 0}
+        alert={alert}
       />
       <Terms
         text={texts.register.term1}
@@ -53,7 +70,11 @@ export default function RegisterScreen() {
         form={form.valuesRegister.check2}
         term={'check2'}
       />
-      <Buttons buttonsActive={buttonsActive} />
+      <Buttons
+        buttonsActive={buttonsActive}
+        form={form.getValues()}
+        changeAlert={changeAlert}
+      />
       <BottomText />
     </View>
   );

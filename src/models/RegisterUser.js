@@ -1,12 +1,17 @@
 class RegisterUser {
-  constructor() {
+  constructor(
+    input1 = '',
+    input2 = '',
+    input3 = '',
+    check1 = true,
+    check2 = false,
+  ) {
     this.valuesRegister = {
-      input1: '',
-      input2: '',
-      input3: '',
-      passwordvisible: false,
-      check1: true,
-      check2: false,
+      input1: input1,
+      input2: input2,
+      input3: input3,
+      check1: check1,
+      check2: check2,
     };
   }
 

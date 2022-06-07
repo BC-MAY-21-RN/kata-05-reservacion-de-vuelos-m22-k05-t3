@@ -5,7 +5,13 @@ import VisibleSVG from '../../assets/icons/visible.svg';
 import VisibleBlueSVG from '../../assets/icons/visibleblue.svg';
 import styles from './style';
 
-export default function InputComponent({title, changeForm, input, text}) {
+export default function InputComponent({
+  title,
+  changeForm,
+  input,
+  text,
+  alert,
+}) {
   const [marginBlue, setMarginBlue] = useState(text);
   const [iconisSelect, setIconIsSelect] = useState(true);
   return (
@@ -15,7 +21,12 @@ export default function InputComponent({title, changeForm, input, text}) {
           ...styles.titleInput,
           ...(title === 'First Name' ? styles.font18 : styles.font16),
         }}>
-        {title}
+        {title}{' '}
+        {title !== 'First Name' ? (
+          <Text style={!alert ? {} : styles.textpink}>
+            {!alert ? '*' : texts.register[input + 'warning']}
+          </Text>
+        ) : null}
       </Text>
       <TextInput
         secureTextEntry={title === 'Password' ? iconisSelect : false}

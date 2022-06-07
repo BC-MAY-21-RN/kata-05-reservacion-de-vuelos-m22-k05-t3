@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
   colorblue: {
     color: colors.bluetitle,
   },
+  textpink: {
+    color: colors.pink,
+  },
 });
 
 export default styles;
